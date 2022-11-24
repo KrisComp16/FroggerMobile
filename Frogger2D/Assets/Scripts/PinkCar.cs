@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class Van : MonoBehaviour
+public class PinkCar : MonoBehaviour
 {
 
     public GameObject pointA;
@@ -22,13 +22,13 @@ public class Van : MonoBehaviour
     {
         Vector2 velocity = rb.velocity;
 
-        velocity.x = -1;
+        velocity.x = -0.7f;
 
         rb.velocity = velocity;
 
         if (transform.position.x <= pointA.transform.position.x)
         {
-            transform.position = new Vector2 (pointB.transform.position.x, transform.position.y);
+            transform.position = new Vector2(pointB.transform.position.x, transform.position.y);
         }
     }
 

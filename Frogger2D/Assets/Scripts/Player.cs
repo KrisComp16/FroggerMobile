@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class Player : MonoBehaviour
     public int speed;
     public GameObject targetPos;
     Animator anim;
-    
+    public PointsManager pm;
+    string currentScene = SceneManager.GetActiveScene().name;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,7 @@ public class Player : MonoBehaviour
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetPos.transform.position, step);
         //CheckForMovement();
+
 
 
     }
@@ -101,6 +105,7 @@ public class Player : MonoBehaviour
                         {
                             targetPos = RayDown.transform.gameObject;
                             anim.Play("downjump", -1, 0f);
+                            pm.playerscore -= 10;
                         }
                     }
                 }
@@ -118,6 +123,7 @@ public class Player : MonoBehaviour
                         {
                             targetPos = RayUp.transform.gameObject;
                             anim.Play("jump", -1, 0f);
+                            pm.playerscore += 10;
                         }
                     }
                 }
@@ -137,7 +143,22 @@ public class Player : MonoBehaviour
     }
     */
 
-    
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "death")
+        {
+            print("dead");
+            anim.Play("death");
+        }
+    }
+
+    /*
+    public void SceneReload()
+    {
+        SceneManager.LoadScene(currentScene);
+    }
+    */
 }
 
 

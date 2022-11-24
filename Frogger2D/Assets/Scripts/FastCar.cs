@@ -8,13 +8,13 @@ public class FastCar : MonoBehaviour
 
     public GameObject pointA;
     public GameObject pointB;
-    private Rigidbody2D rb;
+    private Rigidbody rb;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
